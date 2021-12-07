@@ -25,6 +25,12 @@ describe('Cookbook', () => {
 
   describe('Retrieving a recipe', () => {
     test('should allow the ingredients for a recipe to be retrieved', () => {
+      const myCookbook = new Cookbook();
+      myCookbook.addRecipe(`grilled cheese`, [`bread`,`cheese`, `butter`]);
+
+      const myRecipe = myCookbook.getRecipe(`grilled cheese`);
+
+      expect(myRecipe).toEqual([`bread`, `cheese`, `butter`]);
 
     });
   });
