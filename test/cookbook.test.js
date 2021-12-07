@@ -37,6 +37,14 @@ describe('Cookbook', () => {
 
   describe('Deleting a recipe', () => {
     test('should allow a recipe to be deleted', () => {
+      const myCookbook =  new Cookbook();
+      myCookbook.addRecipe(`bibingka`, [`rice flour`, `butter`, `coconut milk`, `salted egg`]);
+      myCookbook.addRecipe(`menudo`, [`pork`, `tomato paste`, `potatoes`]);
+
+      myCookbook.removeRecipe(`bibingka`);
+
+      expect(myCookbook.recipes).toEqual({menudo: [`pork`, `tomato paste`, `potatoes`]});
+
 
     });
   });
