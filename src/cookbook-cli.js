@@ -27,8 +27,13 @@ class CookbookCli {
   }
 
   remove(name) {
-    this.cookbook.removeRecipe(name);
-    return `Successfully removed the following recipe: ${name}`;
+    const recipe = this.cookbook.getRecipe(name);
+    if (recipe === undefined){
+      return `Oh no, we don't have ${name} in your cookbook`;
+    } else {
+      this.cookbook.removeRecipe(name);
+      return `Successfully removed the following recipe: ${name}`;
+    }
   }
 }
 

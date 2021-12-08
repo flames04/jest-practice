@@ -45,13 +45,21 @@ describe('CookbookCli', () => {
   describe('Deleting a recipe', () => {
     test('should accept the recipe name and display the correct message', () => {
       const myCookbook = new Cookbook();
-      const myCookbookCli =  new CookbookCli(myCookbook);
+      const myCookbookCli = new CookbookCli(myCookbook);
 
-      myCookbookCli.add(`laswa`, [`eggplant`, `pumpkin`, `fish sauce`, `okra` ]);
-
-      const message = myCookbook.remove(`laswa`);
+      myCookbookCli.add('laswa', ['fish sauce', 'eggplant', `greens`, `okra`]);
+      const message = myCookbookCli.remove('laswa');
 
       expect(message).toEqual(`Successfully removed the following recipe: laswa`);
+    });
+
+    test('should display a warning message when the user attempts to delete a recipe that does not exist', () => {
+      const myCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myCookbook);
+
+      const message = myCookbookCli.remove('laswa');
+
+      expect(message).toEqual(`Oh no, we don't have laswa in your cookbook`);
     });
   });
 });
